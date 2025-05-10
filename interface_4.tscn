@@ -1,0 +1,308 @@
+[gd_scene load_steps=3 format=3 uid="uid://rqkgdgu1isin"]
+
+[ext_resource type="Script" uid="uid://cm5jy85ls0ulo" path="res://interface_4.gd" id="1_mojyy"]
+[ext_resource type="PackedScene" uid="uid://w7a4c3q16r" path="res://interface6.tscn" id="2_qvph5"]
+
+[node name="interface_4" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mojyy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 643.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 646.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 91.0
+color = Color(0, 0.427451, 0.427451, 1)
+
+[node name="StudentGrade" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 359.0
+offset_right = 712.0
+offset_bottom = 595.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StudentGrade"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 19.0
+offset_right = 353.0
+offset_bottom = 218.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="StudentGrade/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StudentGrade/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Midterm:"
+
+[node name="MidtermTxT" type="Label" parent="StudentGrade/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="StudentGrade/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StudentGrade/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Finals"
+
+[node name="FinalsTxT" type="Label" parent="StudentGrade/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="StudentGrade/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StudentGrade/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Overall:"
+
+[node name="OverallTxT" type="Label" parent="StudentGrade/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="StudentGrade/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StudentGrade/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Result:"
+
+[node name="ResultTxT" type="Label" parent="StudentGrade/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="Calculate" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 548.0
+offset_right = 217.0
+offset_bottom = 612.0
+theme_override_font_sizes/font_size = 30
+text = "Calculate"
+
+[node name="Midterm" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 46.0
+offset_top = 362.0
+offset_right = 299.0
+offset_bottom = 424.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Midterm"
+
+[node name="Finals" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 47.0
+offset_top = 456.0
+offset_right = 301.0
+offset_bottom = 518.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Finals
+"
+
+[node name="StudentInfo" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 115.0
+offset_right = 469.0
+offset_bottom = 342.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StudentInfo"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 26.0
+offset_right = 355.0
+offset_bottom = 206.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="StudentInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StudentInfo/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Name:"
+
+[node name="Fname" type="Label" parent="StudentInfo/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="Lname" type="Label" parent="StudentInfo/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="StudentInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StudentInfo/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Year Lv:"
+
+[node name="YearLvLTxT" type="Label" parent="StudentInfo/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="StudentInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StudentInfo/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Course:"
+
+[node name="CourseTxT" type="Label" parent="StudentInfo/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="StudentInfo/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StudentInfo/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Institute"
+
+[node name="InstituteTxT" type="Label" parent="StudentInfo/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="FindID" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -531.0
+offset_top = 26.0
+offset_right = 4.0
+offset_bottom = 81.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Search ID"
+
+[node name="Search" type="Button" parent="."]
+layout_mode = 0
+offset_left = 597.0
+offset_top = 27.0
+offset_right = 704.0
+offset_bottom = 77.0
+theme_override_font_sizes/font_size = 30
+text = "Search"
+
+[node name="Incomplete" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 553.0
+offset_top = 224.0
+offset_right = 726.0
+offset_bottom = 299.0
+theme_override_font_sizes/font_size = 30
+text = "Incomplete"
+
+[node name="failed" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 781.0
+offset_top = 226.0
+offset_right = 954.0
+offset_bottom = 301.0
+theme_override_font_sizes/font_size = 30
+text = "Failed
+"
+
+[node name="X" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1075.0
+offset_top = 15.0
+offset_right = 1130.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 30
+text = "X"
+
+[node name="Approve" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 755.0
+offset_top = 437.0
+offset_right = 988.0
+offset_bottom = 513.0
+theme_override_font_sizes/font_size = 30
+text = "Approve"
+
+[node name="Interface6" parent="." instance=ExtResource("2_qvph5")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 273.0
+offset_top = 135.0
+offset_right = 273.0
+offset_bottom = 135.0
+
+[node name="hideInterface" type="Button" parent="Interface6"]
+layout_mode = 0
+offset_left = 676.0
+offset_top = 19.0
+offset_right = 735.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 30
+text = "x"
+
+[node name="Statistics" type="Button" parent="."]
+layout_mode = 0
+offset_left = 716.0
+offset_top = 26.0
+offset_right = 861.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 30
+text = "statistics"
+
+[node name="Statistics" type="Button" parent="Statistics"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = -1.0
+offset_right = 304.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 30
+text = "Sub"
+
+[connection signal="pressed" from="Calculate" to="." method="_on_calculate_pressed"]
+[connection signal="pressed" from="Search" to="." method="_on_search_pressed"]
+[connection signal="pressed" from="Incomplete" to="." method="_on_incomplete_pressed"]
+[connection signal="pressed" from="failed" to="." method="_on_failed_pressed"]
+[connection signal="pressed" from="X" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="Approve" to="." method="_on_approve_pressed"]
+[connection signal="pressed" from="Interface6/hideInterface" to="." method="_on_hide_interface_pressed"]
+[connection signal="pressed" from="Statistics" to="." method="_on_statistics_pressed"]
+[connection signal="pressed" from="Statistics/Statistics" to="." method="Subjects"]

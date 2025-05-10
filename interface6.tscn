@@ -1,0 +1,315 @@
+[gd_scene load_steps=2 format=3 uid="uid://w7a4c3q16r"]
+
+[sub_resource type="GDScript" id="GDScript_cr47d"]
+script/source = "extends Control
+
+var database : SQLite
+var Course = [\"IT, IS, Course1, Course2\"]
+var data 
+var choseInsT = 1
+var institute = [\"ICET\", \"IBEG\"]
+
+func _ready():
+	database = SQLite.new()
+	database.path=\"res://data.db\"
+	database.open_db()
+	
+
+
+func studentpass():
+	var Year = [1,2,3,4]
+	var b: int = 0
+	var passed = [0,0,0,0]
+	
+	
+	
+	while b < 4:
+		database.query(\"SELECT count(*) from Evaluation e
+		JOIN StudentInfo s ON e.StudentID = s.StudentID
+		Where e.Result = 'pass'
+		and s.YearLvL = '\" + str(Year[b]) + \"' \" +
+		\"and s.Institute = '\"  + str(institute[choseInsT]) + \"'\")
+		for i in database.query_result:
+			var count = i[\"count(*)\"]
+			passed[b] = count
+		b +=1
+		
+	
+	$%pass1.text = str(passed[0])
+	$%pass2.text = str(passed[1])
+	$%pass3.text = str(passed[2])
+	$%pass4.text = str(passed[3])
+
+
+
+func failstudentd():
+	var Year = [1,2,3,4]
+	var b: int = 0
+	var fail = [0,0,0,0]
+	while b < 4:
+		database.query(\"SELECT count(*) from Evaluation e
+		JOIN StudentInfo s ON e.StudentID = s.StudentID
+		Where e.Result = 'fail'
+		and s.YearLvL = '\" + str(Year[b]) + \"' \" +
+		\"and s.Institute = '\"  + str(institute[choseInsT]) + \"'\")
+		for i in database.query_result:
+			var count = i[\"count(*)\"]
+			fail[b] = count
+		b +=1
+	
+	$%Fail1.text = str(fail[0])
+	$%Fail2.text = str(fail[1])
+	$%Fail3.text = str(fail[2])
+	$%Fail4.text = str(fail[3])
+	
+	
+	
+
+func INCStudent():
+	var Year = [1,2,3,4]
+	var b: int = 0
+	var inc = [0,0,0,0]
+	while b < 4:
+		database.query(\"SELECT count(*) from Evaluation e
+		JOIN StudentInfo s ON e.StudentID = s.StudentID
+		Where e.Result = 'inc'
+		and s.YearLvL = '\" + str(Year[b]) + \"' \" +
+		\"and s.Institute = '\"  + str(institute[choseInsT]) + \"'\")
+		for i in database.query_result:
+			var count = i[\"count(*)\"]
+			inc[b] = count
+		b +=1
+	
+	$%Inc1.text = str(inc[0])
+	$%Inc2.text = str(inc[1])
+	$%Inc2.text = str(inc[2])
+	$%Inc4.text = str(inc[3])
+	
+
+
+func ICETBTN():
+	$Institure.text = \"ICET\"
+	choseInsT = 0
+	studentpass()
+	failstudentd()
+	INCStudent()
+
+
+
+func IBEGBTN():
+	$Institure.text = \"IBEG\"
+	choseInsT = 1
+	studentpass()
+	failstudentd()
+	INCStudent()
+	
+"
+
+[node name="Interface6" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_cr47d")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -321.0
+offset_right = 191.0
+offset_bottom = -191.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Institure" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.5
+offset_right = 64.5
+offset_bottom = 83.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "ICET"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -157.0
+offset_right = 109.5
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Pass"
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Fail"
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Inc"
+
+[node name="1st" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="pass1" type="Label" parent="VBoxContainer/1st"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="Fail1" type="Label" parent="VBoxContainer/1st"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="Inc1" type="Label" parent="VBoxContainer/1st"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="2nd" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="pass2" type="Label" parent="VBoxContainer/2nd"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="Fail2" type="Label" parent="VBoxContainer/2nd"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="Inc2" type="Label" parent="VBoxContainer/2nd"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="3rd" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="pass3" type="Label" parent="VBoxContainer/3rd"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="Fail3" type="Label" parent="VBoxContainer/3rd"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="Inc3" type="Label" parent="VBoxContainer/3rd"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="3rd2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="pass4" type="Label" parent="VBoxContainer/3rd2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="Fail4" type="Label" parent="VBoxContainer/3rd2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="Inc4" type="Label" parent="VBoxContainer/3rd2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="chooseINsti" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 96.0
+offset_right = 717.0
+offset_bottom = 153.0
+
+[node name="ICET" type="Button" parent="chooseINsti"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "ICET"
+
+[node name="IBEG" type="Button" parent="chooseINsti"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "IBEG"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 220.0
+offset_right = 429.0
+offset_bottom = 393.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="1" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "1st Year"
+
+[node name="2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "2nd Year"
+
+[node name="3" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "3rd Year"
+
+[node name="4" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "4th Year"
+
+[connection signal="pressed" from="chooseINsti/ICET" to="." method="ICETBTN"]
+[connection signal="pressed" from="chooseINsti/IBEG" to="." method="IBEGBTN"]

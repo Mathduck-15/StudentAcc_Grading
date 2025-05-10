@@ -1,0 +1,442 @@
+[gd_scene load_steps=3 format=3 uid="uid://dby03hmu281yu"]
+
+[sub_resource type="GDScript" id="GDScript_hshsu"]
+script/source = "extends Control
+
+var StudentID
+var database : SQLite
+var yearLV
+var course
+
+func _ready():
+	database = SQLite.new()
+	database.path=\"res://data.db\"
+	database.open_db()
+	getStudentID()
+	StudentInfo()
+	showsubject()
+
+
+func getStudentID():
+	var tempID = database.select_rows(\"Reference\",\"ID = 1 \", [\"StudentID\"])
+	
+	if tempID.size() > 0:
+		var data = tempID[0]
+		# Access the \"UserID\" value from the dictionary
+		StudentID = str(data[\"StudentID\"])
+
+func StudentInfo():
+	var query =  \"StudentID = '\" + StudentID + \"'\" 
+	var FirstName = database.select_rows(\"StudentInfo\", query, [\"FirstName\"])
+	if FirstName.size() > 0:
+		var data = FirstName[0]
+		$%Fname.text = str(data[\"FirstName\"])
+		$%Fname2.text = str(data[\"FirstName\"])
+	
+	var LastName = database.select_rows(\"StudentInfo\", query, [\"LastName\"])
+	if LastName.size() > 0:
+		var data = LastName[0]
+		$%Lname.text = str(data[\"LastName\"])
+		$%Lname2.text =str(data[\"LastName\"])
+	
+	var Institute =  database.select_rows(\"StudentInfo\", query, [\"Institute\"])
+	if Institute.size() > 0:
+		var data = Institute[0]
+		$%Institute.text = str(data[\"Institute\"])
+		$%Institute2.text =  str(data[\"Institute\"])
+		
+	
+	var Gender =  database.select_rows(\"StudentInfo\", query, [\"Gender\"])
+	if Gender.size() > 0:
+		var data = Gender[0]
+		$%Gender.text = str(data[\"Gender\"])
+	
+	var Course =  database.select_rows(\"StudentInfo\", query, [\"Course\"])
+	if Course.size() > 0:
+		var data = Course[0]
+		$%Course.text = str(data[\"Course\"])
+		$%Course2.text = str(data[\"Course\"])
+		course = str(data[\"Course\"])
+	
+	var YearLvL =  database.select_rows(\"StudentInfo\", query, [\"YearLvL\"])
+	var data = YearLvL[0] 
+	$%YearLvL.text = str(data[\"YearLvL\"])
+	$%Yearlv2.text = str(data[\"YearLvL\"])
+	yearLV = str(data[\"YearLvL\"])
+	
+	
+	var Finals =  database.select_rows(\"Grade\", query, [\"Finals\"])
+	if Finals.size() > 0:
+		var data3 = Finals[0]
+		$%Finals.text = str(data3[\"Finals\"])
+	
+	var Midterm =  database.select_rows(\"Grade\", query, [\"Midterm\"])
+	if Midterm.size() > 0:
+		var data3 = Midterm[0]
+		$%Midterm.text = str(data3[\"Midterm\"])
+		
+	var overall = database.select_rows(\"Evaluation\", query, [\"Overall\"])
+	if overall.size() > 0:
+		var data3 = overall[0]
+		$%Overall.text = str(data3[\"Overall\"])
+	
+	var result = database.select_rows(\"Evaluation\", query, [\"Result\"])
+	if result.size() > 0:
+		var data3 = result[0]
+		$%Result.text = str(data3[\"Result\"])
+		
+
+
+func showsubject():
+	#\"Username = '\" + user_name_value + \"'\"  
+	var query =  \"SubID > 1 \"
+	query += \" AND Course = '\" + course + \"'\"
+	query += \" AND Year = '\" + yearLV + \"'\"
+	var me = database.select_rows(\"Subject\", query, [\"Subject\"])
+	var i = 0
+	var subjects = [\"\", \"\", \"\", \"\",\"\", \"\", \"\", \"\",\"\", \"\", \"\", \"\",\"\", \"\", \"\", \"\",\"\", \"\", \"\", \"\",\"\", \"\", \"\", \"\",] 
+	while me.size() > i:
+		if me.size() > 0:
+			var data3 = me[i]
+			subjects [i] = str(data3[\"Subject\"])
+			
+		
+		
+		i +=1
+		pass
+	$%Subjects.text = \"\\n\".join(subjects)
+	
+
+
+func exit():
+	get_tree().change_scene_to_file(\"res://interface_1.tscn\")
+	pass # Replace with function body.
+"
+
+[sub_resource type="SystemFont" id="SystemFont_trf6h"]
+
+[node name="Interface_2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_hshsu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+
+[node name="ColorRect2" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -447.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0, 0.427451, 0.427451, 1)
+
+[node name="Info" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -404.0
+offset_top = -98.0
+offset_right = -27.0
+offset_bottom = 277.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info"]
+layout_mode = 2
+offset_left = 11.0
+offset_right = 380.0
+offset_bottom = 386.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Info/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="Info/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Name:"
+
+[node name="Lname" type="Label" parent="Info/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="Fname" type="Label" parent="Info/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Info/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Info/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Year Lv:"
+
+[node name="YearLvL" type="Label" parent="Info/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Info/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Info/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Institute:"
+
+[node name="Institute" type="Label" parent="Info/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Info/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Info/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Course:"
+
+[node name="Course" type="Label" parent="Info/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Info/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Info/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Gender:"
+
+[node name="Gender" type="Label" parent="Info/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -404.0
+offset_top = 78.0
+offset_right = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 113.0
+offset_right = 665.0
+offset_bottom = 585.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 40
+text = "Name :"
+
+[node name="Fname2" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 40
+
+[node name="Lname2" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 40
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 30
+text = "Year level:"
+
+[node name="Yearlv2" type="Label" parent="VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 30
+text = "Institue:"
+
+[node name="Institute2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 30
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 30
+text = "Course:"
+
+[node name="Course2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 60
+text = "Midterm:"
+
+[node name="Midterm" type="Label" parent="VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 60
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 60
+text = "Finals:"
+
+[node name="Finals" type="Label" parent="VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 60
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 60
+text = "Overall:"
+
+[node name="Overall" type="Label" parent="VBoxContainer/HBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 60
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 60
+text = "Result:"
+
+[node name="Result" type="Label" parent="VBoxContainer/HBoxContainer7"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_trf6h")
+theme_override_font_sizes/font_size = 60
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1023.0
+offset_top = 24.0
+offset_right = 1099.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 30
+text = "x"
+
+[node name="Subject" type="Panel" parent="."]
+custom_minimum_size = Vector2(150, 600)
+layout_mode = 0
+offset_left = 23.0
+offset_top = 24.0
+offset_right = 63.0
+offset_bottom = 624.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Subject"]
+custom_minimum_size = Vector2(140, 600)
+layout_mode = 0
+offset_left = 6.0
+offset_right = 146.0
+offset_bottom = 600.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Subject/ScrollContainer"]
+custom_minimum_size = Vector2(140, 600)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Subject/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Subject/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Subjects:"
+
+[node name="Subjects" type="Label" parent="Subject/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "<>"
+
+[connection signal="pressed" from="Button" to="." method="exit"]

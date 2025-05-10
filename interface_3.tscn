@@ -1,0 +1,290 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxxegtlvbl1dc"]
+
+[ext_resource type="Script" uid="uid://bu7tqu0p5oglk" path="res://interface_3.gd" id="1_pb2q4"]
+
+[node name="Interface_3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pb2q4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 648.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+
+[node name="Fname" type="TextEdit" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 92.0
+offset_top = 20.0
+offset_right = 366.0
+offset_bottom = 90.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Firs Name"
+
+[node name="Lname" type="TextEdit" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 401.0
+offset_top = 22.0
+offset_right = 675.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Last Name"
+
+[node name="reset" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 519.0
+offset_right = 695.0
+offset_bottom = 561.0
+text = "Reset"
+
+[node name="Username" type="TextEdit" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 96.0
+offset_top = 114.0
+offset_right = 370.0
+offset_bottom = 184.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Username"
+
+[node name="Password" type="TextEdit" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 401.0
+offset_top = 118.0
+offset_right = 675.0
+offset_bottom = 188.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Password"
+
+[node name="Panel2Prime" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 235.0
+offset_right = 667.0
+offset_bottom = 509.0
+
+[node name="PanelICET" type="Panel" parent="Panel2Prime"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 276.0
+offset_top = -1.0
+offset_right = 567.0
+offset_bottom = 273.0
+
+[node name="ICET" type="Button" parent="Panel2Prime/PanelICET"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 20.0
+offset_right = 236.0
+offset_bottom = 71.0
+text = "ICET"
+
+[node name="BSIT" type="Button" parent="Panel2Prime/PanelICET"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 59.0
+offset_top = 129.0
+offset_right = 239.0
+offset_bottom = 180.0
+text = "BSIT"
+
+[node name="BSIS" type="Button" parent="Panel2Prime/PanelICET"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 192.0
+offset_right = 236.0
+offset_bottom = 243.0
+text = "BSIS"
+
+[node name="PanelIBEG" type="Panel" parent="Panel2Prime"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 275.0
+offset_bottom = 272.0
+
+[node name="IBEG" type="Button" parent="Panel2Prime/PanelIBEG"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 16.0
+offset_right = 228.0
+offset_bottom = 67.0
+text = "IBEG"
+
+[node name="Course1" type="Button" parent="Panel2Prime/PanelIBEG"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 49.0
+offset_top = 125.0
+offset_right = 229.0
+offset_bottom = 176.0
+text = "Course 1"
+
+[node name="Course2" type="Button" parent="Panel2Prime/PanelIBEG"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 49.0
+offset_top = 195.0
+offset_right = 229.0
+offset_bottom = 246.0
+text = "Course 2"
+
+[node name="Enroll" type="Button" parent="."]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 534.0
+offset_right = 498.0
+offset_bottom = 609.0
+theme_override_font_sizes/font_size = 30
+text = "Enroll"
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 138.0
+offset_right = 581.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.427451, 0.427451, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 172.0
+offset_right = 1134.0
+offset_bottom = 303.0
+theme_override_font_sizes/font_size = 60
+text = "ENROLL NOW"
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 759.0
+offset_top = 294.0
+offset_right = 982.0
+offset_bottom = 611.0
+
+[node name="Label" type="Label" parent="Panel3"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 130.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 30
+text = "Year LvL"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel3"]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 77.0
+offset_right = 199.0
+offset_bottom = 289.0
+
+[node name="1styear" type="Button" parent="Panel3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1st year"
+
+[node name="2ndyear" type="Button" parent="Panel3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "2nd year"
+
+[node name="3rdyear" type="Button" parent="Panel3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "3rd year"
+
+[node name="4thyear" type="Button" parent="Panel3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "4th year"
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -351.0
+offset_right = -28.0
+offset_bottom = -184.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel2"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 22.0
+offset_right = 85.0
+offset_bottom = 45.0
+text = "Gender"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 75.0
+offset_right = 99.0
+offset_bottom = 191.0
+
+[node name="Male" type="Button" parent="Panel2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "M
+"
+
+[node name="Female" type="Button" parent="Panel2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "F
+"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1045.0
+offset_top = 26.0
+offset_right = 1122.0
+offset_bottom = 71.0
+text = "x"
+
+[connection signal="pressed" from="Panel/reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Panel2Prime/PanelICET/ICET" to="." method="_on_icet_pressed"]
+[connection signal="pressed" from="Panel2Prime/PanelICET/BSIT" to="." method="_on_bsit_pressed"]
+[connection signal="pressed" from="Panel2Prime/PanelICET/BSIS" to="." method="_on_bsis_pressed"]
+[connection signal="pressed" from="Panel2Prime/PanelIBEG/IBEG" to="." method="_on_ibeg_pressed"]
+[connection signal="pressed" from="Panel2Prime/PanelIBEG/Course1" to="." method="_on_course_1_pressed"]
+[connection signal="pressed" from="Panel2Prime/PanelIBEG/Course2" to="." method="_on_course_2_pressed"]
+[connection signal="pressed" from="Enroll" to="." method="_on_enroll_pressed"]
+[connection signal="pressed" from="Panel3/VBoxContainer/1styear" to="." method="_on_styear_pressed"]
+[connection signal="pressed" from="Panel3/VBoxContainer/2ndyear" to="." method="_on_ndyear_pressed"]
+[connection signal="pressed" from="Panel3/VBoxContainer/3rdyear" to="." method="_on_rdyear_pressed"]
+[connection signal="pressed" from="Panel3/VBoxContainer/4thyear" to="." method="_on_thyear_pressed"]
+[connection signal="pressed" from="Panel2/VBoxContainer/Male" to="." method="_on_male_pressed"]
+[connection signal="pressed" from="Panel2/VBoxContainer/Female" to="." method="_on_female_pressed"]
+[connection signal="pressed" from="Button" to="." method="exit"]

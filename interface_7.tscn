@@ -1,0 +1,226 @@
+[gd_scene load_steps=2 format=3 uid="uid://ten2kwwu3if5"]
+
+[ext_resource type="Script" uid="uid://b4jxwp1d3ckv4" path="res://interface_7.gd" id="1_8bw7e"]
+
+[node name="Interface7" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8bw7e")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+custom_minimum_size = Vector2(490, 490)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.0
+offset_top = -244.5
+offset_right = 247.0
+offset_bottom = 264.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "INSTITUTE"
+
+[node name="institute" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="ICET" type="Button" parent="Panel/MarginContainer/VBoxContainer/institute"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "ICET"
+
+[node name="IBEG" type="Button" parent="Panel/MarginContainer/VBoxContainer/institute"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "IBEG"
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "COURSE"
+
+[node name="Course" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="Course1" type="Button" parent="Panel/MarginContainer/VBoxContainer/Course"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+
+[node name="Course2" type="Button" parent="Panel/MarginContainer/VBoxContainer/Course"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Year"
+
+[node name="Course2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 17
+
+[node name="1st" type="Button" parent="Panel/MarginContainer/VBoxContainer/Course2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "1st"
+
+[node name="2nd" type="Button" parent="Panel/MarginContainer/VBoxContainer/Course2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "2nd"
+
+[node name="3rd" type="Button" parent="Panel/MarginContainer/VBoxContainer/Course2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "3rd"
+
+[node name="4th" type="Button" parent="Panel/MarginContainer/VBoxContainer/Course2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+text = "4th"
+
+[node name="Label4" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Update"
+
+[node name="Update" type="TextEdit" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "Update"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="btn1" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "<insert Sub>"
+
+[node name="btn2" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "<insert Sub>"
+
+[node name="Label5" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Insert"
+
+[node name="Insert" type="TextEdit" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "Insert"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Insert" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(163, 30)
+layout_mode = 2
+text = "Insert"
+
+[node name="Update" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(163, 30)
+layout_mode = 2
+text = "Update"
+
+[node name="Update2" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(163, 30)
+layout_mode = 2
+text = "Delete"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Subject"
+
+[node name="#2" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 20)
+layout_mode = 2
+offset_left = 773.0
+offset_top = 19.0
+offset_right = 824.0
+offset_bottom = 79.0
+text = "X"
+
+[node name="#" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 60)
+layout_mode = 2
+offset_left = 744.0
+offset_top = 20.0
+offset_right = 764.0
+offset_bottom = 80.0
+text = "#"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/institute/ICET" to="." method="ICETBTN"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/institute/IBEG" to="." method="IBEGBTN"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Course/Course1" to="." method="Course1"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Course/Course2" to="." method="Course2"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Course2/1st" to="." method="first"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Course2/2nd" to="." method="second"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Course2/3rd" to="." method="third"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Course2/4th" to="." method="fourth"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/btn1" to="." method="BTN1"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/btn2" to="." method="BTN2"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/Insert" to="." method="_on_insert_pressed"]
+[connection signal="pressed" from="#2" to="." method="Exit"]
+[connection signal="pressed" from="#" to="." method="ResetBTn"]
